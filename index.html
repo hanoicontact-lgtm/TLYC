@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trị Liệu Y Cơ — Hiểu cơ thể mình, sống chủ động hơn</title>
+<meta name="description" content="Khóa học Hiểu về huyết áp và Hiểu về thể trạng cơ thể. Đăng ký tư vấn qua Zalo 0778 659 779.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap&subset=vietnamese" rel="stylesheet">
+<style>
+  :root{
+    --pine:#14332C;
+    --pine-dark:#0C221D;
+    --coral:#E85D42;
+    --coral-dark:#C94A32;
+    --sage:#B7CFC2;
+    --mist:#EFF3EF;
+    --ink:#1B211D;
+    --paper:#FBFAF7;
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  h1,h2,h3{font-family:var(--serif); font-weight:600; line-height:1.15; letter-spacing:-0.01em;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,250,247,0.9);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid rgba(20,51,44,0.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px;
+  }
+  .brand{
+    font-family:var(--serif); font-weight:600; font-size:1.15rem;
+    color:var(--pine); letter-spacing:-0.01em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .nav-links{display:flex; gap:32px; font-size:0.95rem; font-weight:500;}
+  .nav-links a{color:var(--pine); opacity:0.75; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--coral); color:#fff; font-weight:600; font-size:0.9rem;
+    padding:10px 18px; border-radius:999px;
+    transition: background .2s, transform .2s;
+  }
+  .nav-cta:hover{background:var(--coral-dark); transform:translateY(-1px);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background: linear-gradient(180deg, var(--pine) 0%, var(--pine-dark) 100%);
+    color: var(--mist);
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 0;
+  }
+  .hero-inner{
+    max-width:720px; margin:0 auto; text-align:center;
+    padding:0 24px 72px;
+    position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:inline-block; font-size:0.78rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase;
+    color: var(--sage); margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    color:#fff; margin-bottom:22px;
+  }
+  .hero h1 em{color:var(--coral); font-style:italic;}
+  .hero p{
+    font-size:1.08rem; color:rgba(239,243,239,0.82);
+    max-width:520px; margin:0 auto 36px;
+  }
+  .hero-ctas{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--coral); color:#fff; font-weight:600; font-size:0.98rem;
+    padding:14px 28px; border-radius:999px;
+    display:inline-flex; align-items:center; gap:10px;
+    transition: background .2s, transform .2s;
+    border:none; cursor:pointer;
+  }
+  .btn-primary:hover{background:var(--coral-dark); transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid rgba(239,243,239,0.3); color:#fff;
+    font-weight:600; font-size:0.98rem; padding:14px 26px; border-radius:999px;
+    transition: border-color .2s, background .2s;
+  }
+  .btn-ghost:hover{border-color:rgba(239,243,239,0.7); background:rgba(255,255,255,0.06);}
+
+  .pulse-wrap{
+    position:relative; width:100%; height:120px;
+    border-top:1px solid rgba(239,243,239,0.12);
+  }
+  .pulse-wrap svg{width:100%; height:100%;}
+  .pulse-path{
+    fill:none; stroke:var(--coral); stroke-width:2.5;
+    stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation: draw 2.6s ease-out .3s forwards, glow 3s ease-in-out 3s infinite;
+  }
+  @keyframes draw{ to{stroke-dashoffset:0;} }
+  @keyframes glow{
+    0%,100%{opacity:1;} 50%{opacity:0.55;}
+  }
+
+  .values{padding:88px 0; background:var(--mist);}
+  .section-head{max-width:600px; margin:0 auto 56px; text-align:center;}
+  .section-head .eyebrow{color:var(--coral-dark);}
+  .section-head h2{font-size:clamp(1.6rem, 3.4vw, 2.2rem); color:var(--pine);}
+  .section-head p{color:rgba(27,33,29,0.65); margin-top:14px; font-size:1.02rem;}
+
+  .value-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
+  }
+  .value-card{
+    background:var(--paper); border-radius:18px; padding:32px 26px;
+    border:1px solid rgba(20,51,44,0.08);
+  }
+  .value-mark{
+    width:38px; height:38px; margin-bottom:20px;
+  }
+  .value-card h3{font-size:1.15rem; color:var(--pine); margin-bottom:10px;}
+  .value-card p{font-size:0.94rem; color:rgba(27,33,29,0.68);}
+
+  .courses{padding:96px 0; background:var(--paper);}
+  .course-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:28px;
+  }
+  .course-card{
+    border:1px solid rgba(20,51,44,0.1); border-radius:20px;
+    padding:34px 28px; background:#fff;
+    display:flex; flex-direction:column;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .course-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 32px rgba(20,51,44,0.08);
+  }
+  .course-tag{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--coral-dark); margin-bottom:16px;
+  }
+  .course-meta-row{
+    display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;
+  }
+  .course-meta{
+    display:inline-block; font-size:0.8rem; font-weight:600;
+    color:var(--pine); background:var(--sage); opacity:0.9;
+    padding:4px 12px; border-radius:999px;
+  }
+  .course-card h3{font-size:1.35rem; color:var(--pine); margin-bottom:14px;}
+  .course-card p{font-size:0.94rem; color:rgba(27,33,29,0.68); margin-bottom:24px; flex-grow:1;}
+  .course-points{margin-bottom:26px;}
+  .course-points li{
+    font-size:0.88rem; color:rgba(27,33,29,0.75);
+    padding-left:20px; position:relative; margin-bottom:8px;
+  }
+  .course-points li::before{
+    content:""; position:absolute; left:0; top:8px;
+    width:6px; height:6px; border-radius:50%; background:var(--coral);
+  }
+  .course-cta{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    border:1.5px solid var(--pine); color:var(--pine);
+    font-weight:600; font-size:0.9rem; padding:12px 20px; border-radius:999px;
+    transition: background .2s, color .2s;
+  }
+  .course-cta:hover{background:var(--pine); color:#fff;}
+
+  .contact-band{
+    background: linear-gradient(180deg, var(--pine-dark) 0%, var(--pine) 100%);
+    color:#fff; padding:88px 0; text-align:center;
+  }
+  .contact-band .eyebrow{color:var(--sage);}
+  .contact-band h2{font-size:clamp(1.7rem, 3.6vw, 2.4rem); margin-bottom:16px;}
+  .contact-band p{color:rgba(239,243,239,0.78); max-width:480px; margin:0 auto 36px; font-size:1.02rem;}
+
+  .phone-pill{
+    display:inline-flex; align-items:center; gap:12px;
+    background:rgba(239,243,239,0.08); border:1px solid rgba(239,243,239,0.2);
+    border-radius:999px; padding:10px 10px 10px 22px; margin-bottom:32px;
+  }
+  .phone-pill span{font-family:var(--serif); font-size:1.15rem; letter-spacing:0.03em;}
+
+  footer{
+    background:var(--ink); color:rgba(239,243,239,0.6);
+    padding:40px 0; font-size:0.85rem;
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  .footer-inner strong{color:#fff; font-weight:600;}
+
+  .feedback{padding:96px 0; background:var(--mist);}
+  .feedback-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:24px;
+  }
+  .feedback-card{
+    background:#fff; border-radius:18px; padding:30px 28px;
+    border:1px solid rgba(20,51,44,0.08);
+  }
+  .feedback-quote-mark{
+    width:28px; height:28px; margin-bottom:16px; opacity:0.85;
+  }
+  .feedback-text{
+    font-size:0.98rem; color:rgba(27,33,29,0.8); line-height:1.6; margin-bottom:20px;
+  }
+  .feedback-name{font-weight:600; color:var(--pine); font-size:0.95rem;}
+  .feedback-role{font-size:0.82rem; color:rgba(27,33,29,0.5);}
+
+  .zalo-float{
+    position:fixed; right:20px; bottom:20px; z-index:100;
+    width:58px; height:58px; border-radius:50%;
+    background:#0068FF;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 20px rgba(0,104,255,0.4);
+    transition:transform .2s;
+  }
+  .zalo-float:hover{transform:scale(1.08);}
+  .zalo-float svg{width:30px; height:30px;}
+  .zalo-float::before{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    background:#0068FF; opacity:0.5;
+    animation: zalo-ping 2s ease-out infinite;
+  }
+  @keyframes zalo-ping{
+    0%{transform:scale(1); opacity:0.5;}
+    100%{transform:scale(1.6); opacity:0;}
+  }
+
+  /* ---------- Survey Form ---------- */
+  .survey-form-section{padding:96px 0; background:var(--paper);}
+  .form-container{
+    background:#fff; border:1px solid rgba(20,51,44,0.08);
+    border-radius:20px; padding:48px 42px; max-width:720px; margin:0 auto;
+    box-shadow: 0 4px 12px rgba(20,51,44,0.04);
+  }
+  .survey-form{display:flex; flex-direction:column; gap:28px;}
+  
+  .form-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:20px;
+  }
+  .form-group{display:flex; flex-direction:column;}
+  .form-group label:not(.radio-option){
+    font-weight:600; color:var(--pine); margin-bottom:10px; font-size:0.98rem;
+  }
+  .form-group input:not([type="radio"]),
+  .form-group textarea{
+    padding:12px 16px; border:1px solid rgba(20,51,44,0.12);
+    border-radius:8px; font-family:var(--sans); font-size:0.95rem;
+    color:var(--ink); background:#fff;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus{
+    outline:none; border-color:var(--coral);
+    box-shadow:0 0 0 3px rgba(232,93,66,0.08);
+  }
+  .form-group textarea{
+    resize:vertical; min-height:100px; font-family:var(--sans);
+  }
+
+  .form-question{gap:14px;}
+  .question-title{
+    font-weight:600; color:var(--pine); font-size:0.98rem;
+  }
+  .radio-group{
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .radio-option{
+    display:flex; align-items:flex-start; gap:12px; cursor:pointer;
+    padding:12px 14px; border-radius:8px;
+    transition: background .2s;
+  }
+  .radio-option:hover{background:rgba(20,51,44,0.04);}
+  .radio-option input[type="radio"]{
+    margin-top:3px; margin-right:0; cursor:pointer; flex-shrink:0;
+    accent-color:var(--coral);
+  }
+  .radio-option span{
+    font-size:0.94rem; color:var(--ink); line-height:1.4;
+  }
+
+  .form-actions{
+    display:flex; flex-direction:column; gap:16px; align-items:center;
+    padding-top:16px; border-top:1px solid rgba(20,51,44,0.08);
+  }
+  .form-actions .btn-primary{
+    min-width:200px; justify-content:center;
+  }
+  .form-note{
+    font-size:0.85rem; color:rgba(27,33,29,0.6); text-align:center;
+  }
+
+  .google-form-wrap{
+    width:100%; border-radius:16px; overflow:hidden;
+    border:1px solid rgba(20,51,44,0.08);
+    background:#f8faf8;
+  }
+  .google-form-wrap iframe{
+    width:100%; min-height:1200px; border:0; display:block; background:#fff;
+  }
+  .google-form-placeholder{
+    padding:26px 22px; background:linear-gradient(135deg, rgba(20,51,44,0.03), rgba(232,93,66,0.04));
+    color:var(--ink); border-radius:16px; border:1px dashed rgba(20,51,44,0.2);
+  }
+  .google-form-placeholder strong{color:var(--pine); display:block; margin-bottom:8px;}
+  .google-form-placeholder ul{
+    list-style:disc; padding-left:20px; margin-top:12px;
+    color:rgba(27,33,29,0.72);
+  }
+
+  @media (max-width: 860px){
+    .nav-links{display:none;}
+    .value-grid, .course-grid{grid-template-columns:1fr;}
+    .feedback-grid{grid-template-columns:1fr;}
+    .footer-inner{flex-direction:column; text-align:center;}
+    .form-row{grid-template-columns:1fr;}
+  }
+
+  @media (max-width:720px){
+    .form-container{padding:32px 24px;}
+  }
+
+  /* ---------- Chatbot Widget Styles ---------- */
+  .chat-widget-toggle {
+    position: fixed; right: 20px; bottom: 90px; z-index: 1000;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--pine); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 20px rgba(20, 51, 44, 0.35);
+    border: 2px solid var(--sage);
+    cursor: pointer; transition: transform .2s, background .2s;
+  }
+  .chat-widget-toggle:hover {
+    transform: scale(1.08); background: var(--pine-dark);
+  }
+  .chat-widget-toggle svg { width: 26px; height: 26px; fill: #fff; }
+  .chat-widget-badge {
+    position: absolute; top: -2px; right: -2px;
+    width: 14px; height: 14px; background: var(--coral);
+    border: 2px solid #fff; border-radius: 50%;
+  }
+
+  .chat-window {
+    position: fixed; right: 20px; bottom: 156px; z-index: 1001;
+    width: 380px; max-width: calc(100vw - 32px); height: 520px; max-height: 78vh;
+    background: var(--paper); border-radius: 18px;
+    border: 1px solid rgba(20, 51, 44, 0.15);
+    box-shadow: 0 12px 36px rgba(20, 51, 44, 0.25);
+    display: none; flex-direction: column; overflow: hidden;
+    font-family: var(--sans);
+  }
+  .chat-window.active { display: flex; }
+
+  .chat-header {
+    background: linear-gradient(135deg, var(--pine) 0%, var(--pine-dark) 100%);
+    color: #fff; padding: 14px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .chat-header-info { display: flex; flex-direction: column; }
+  .chat-header-title { font-weight: 600; font-size: 0.98rem; color: #fff; }
+  .chat-header-sub { font-size: 0.76rem; color: var(--sage); }
+  .chat-close-btn {
+    background: transparent; border: none; color: #fff;
+    font-size: 1.4rem; cursor: pointer; opacity: 0.8; transition: opacity .2s;
+    line-height: 1; padding: 0 4px;
+  }
+  .chat-close-btn:hover { opacity: 1; }
+
+  .chat-body {
+    flex-grow: 1; padding: 16px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 12px;
+    background: var(--mist);
+  }
+
+  .msg-bubble {
+    max-width: 86%; padding: 10px 14px; border-radius: 14px;
+    font-size: 0.88rem; line-height: 1.5; word-wrap: break-word;
+  }
+  .msg-bot {
+    align-self: flex-start; background: #fff; color: var(--ink);
+    border: 1px solid rgba(20, 51, 44, 0.08);
+    border-bottom-left-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  .msg-user {
+    align-self: flex-end; background: var(--coral); color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+
+  .quick-replies {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+  }
+  .quick-btn {
+    background: #fff; border: 1.2px solid var(--pine); color: var(--pine);
+    font-size: 0.78rem; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+    cursor: pointer; transition: background .2s, color .2s; text-align: left;
+  }
+  .quick-btn:hover { background: var(--pine); color: #fff; }
+
+  .cta-chat-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; margin-top: 10px; padding: 10px 14px;
+    background: var(--coral); color: #fff; font-weight: 600; font-size: 0.88rem;
+    border-radius: 999px; border: none; cursor: pointer; text-decoration: none;
+    transition: background .2s, transform .1s;
+    box-shadow: 0 4px 10px rgba(232,93,66,0.25);
+  }
+  .cta-chat-btn:hover { background: var(--coral-dark); transform: translateY(-1px); }
+
+  .chat-footer {
+    padding: 10px 14px; background: #fff;
+    border-top: 1px solid rgba(20, 51, 44, 0.08);
+    display: flex; gap: 8px; align-items: center;
+  }
+  .chat-input {
+    flex-grow: 1; border: 1px solid rgba(20, 51, 44, 0.15);
+    border-radius: 999px; padding: 8px 14px; font-size: 0.88rem;
+    outline: none; font-family: var(--sans);
+  }
+  .chat-input:focus { border-color: var(--coral); }
+  .chat-send-btn {
+    background: var(--pine); color: #fff; border: none;
+    width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s; flex-shrink: 0;
+  }
+  .chat-send-btn:hover { background: var(--pine-dark); }
+
+  /* ---------- Sepay VietQR Payment Modal ---------- */
+  .sepay-modal-backdrop {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(12, 34, 29, 0.7); backdrop-filter: blur(4px);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .sepay-modal-backdrop.active { display: flex; }
+
+  .sepay-modal-card {
+    background: var(--paper); border-radius: 20px;
+    width: 440px; max-width: 100%; max-height: 90vh; overflow-y: auto;
+    border: 1px solid rgba(20, 51, 44, 0.12);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.25);
+    display: flex; flex-direction: column;
+    animation: modalSlideUp 0.3s ease-out;
+  }
+  @keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .sepay-modal-header {
+    background: linear-gradient(135deg, var(--pine) 0%, var(--pine-dark) 100%);
+    color: #fff; padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .sepay-modal-header h3 { font-size: 1.05rem; color: #fff; margin: 0; }
+  .sepay-modal-close {
+    background: transparent; border: none; color: #fff; font-size: 1.5rem;
+    cursor: pointer; opacity: 0.85; line-height: 1;
+  }
+  .sepay-modal-close:hover { opacity: 1; }
+
+  .sepay-modal-body { padding: 22px 24px; text-align: center; }
+  .sepay-qr-container {
+    background: #fff; padding: 14px; border-radius: 16px;
+    border: 1px solid rgba(20, 51, 44, 0.1); display: inline-block;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04); margin-bottom: 16px;
+  }
+  .sepay-qr-img { width: 230px; height: 230px; display: block; margin: 0 auto; }
+
+  .sepay-info-group {
+    background: #fff; border-radius: 12px; padding: 14px 16px;
+    border: 1px solid rgba(20, 51, 44, 0.08); text-align: left;
+    margin-bottom: 14px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .sepay-info-row {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.88rem;
+  }
+  .sepay-info-label { color: rgba(27,33,29,0.65); font-weight: 500; }
+  .sepay-info-val { font-weight: 600; color: var(--pine); display: flex; align-items: center; gap: 8px; }
+  .sepay-copy-btn {
+    background: var(--mist); border: 1px solid rgba(20,51,44,0.15);
+    color: var(--pine); font-size: 0.75rem; font-weight: 600;
+    padding: 3px 8px; border-radius: 6px; cursor: pointer; transition: background .2s;
+  }
+  .sepay-copy-btn:hover { background: var(--sage); }
+
+  .sepay-status-box {
+    background: rgba(232, 93, 66, 0.08); border: 1px dashed var(--coral);
+    border-radius: 12px; padding: 12px 16px; font-size: 0.85rem;
+    color: var(--pine); display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .sepay-pulse-dot {
+    width: 10px; height: 10px; border-radius: 50%; background: var(--coral);
+    animation: pulseGlow 1.5s infinite; flex-shrink: 0;
+  }
+  @keyframes pulseGlow {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(232, 93, 66, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(232, 93, 66, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(232, 93, 66, 0); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="#top" class="brand">Trị Liệu Y Cơ</a>
+    <nav class="nav-links">
+      <a href="#khoa-hoc">Khóa học</a>
+      <a href="#form-dang-ky">Khảo sát nhu cầu</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+    <a class="nav-cta" href="https://zalo.me/0778659779" target="_blank">Nhắn Zalo</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Trị Liệu Y Cơ · Tư Duy Y Khoa Chuẩn Chứng Cứ</span>
+      <h1>Không đào tạo 'thợ làm mẹo' —<br>Nâng tầm thành <em>Chuyên viên Trị liệu</em></h1>
+      <p>Thay vì dạy mẹo bấm bóp ngắn hạn, chúng tôi hệ thống hóa tư duy y khoa chuẩn chứng cứ và trao tận tay bộ công cụ đánh giá lâm sàng — giúp KTV làm chủ ranh giới an toàn, tự tin xây dựng phác đồ và khẳng định vị thế chuyên môn độc lập.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://zalo.me/0778659779" target="_blank">Nhắn Zalo đăng ký</a>
+        <a class="btn-ghost" href="#khoa-hoc">Xem khóa học</a>
+      </div>
+    </div>
+    <div class="pulse-wrap">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path class="pulse-path" d="M0,60 L280,60 L320,60 L345,15 L370,105 L395,60 L430,60 L460,40 L480,80 L500,60 L1200,60"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="values" id="gia-tri">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Khác biệt cốt lõi</span>
+        <h2>Vì sao KTV chọn tư duy y khoa thay vì chạy theo mẹo vặt ngắn hạn?</h2>
+      </div>
+      <div class="value-grid">
+        <div class="value-card">
+          <h3>Ranh giới an toàn & Logic loại trừ</h3>
+          <p>Phân biệt rõ đau cơ thuần túy vs tổn thương thần kinh/đĩa đệm. Biết chính xác khi nào được can thiệp, khi nào dừng lại và khi nào chuyển viện an toàn.</p>
+        </div>
+        <div class="value-card">
+          <h3>Bộ công cụ & Checklist ứng dụng ngay</h3>
+          <p>Sở hữu bộ checklist đánh giá đau, mini-guide và case study thực tế đã chuẩn hóa để tự tin giải thích minh bạch, thuyết phục người bệnh.</p>
+        </div>
+        <div class="value-card">
+          <h3>Tư duy & Uy tín chuyên gia</h3>
+          <p>Rèn luyện tư duy y học chuẩn mực và ngôn ngữ khách quan, tạo dựng uy tín chuyên môn bền vững để khách hàng tự tìm đến và tôn trọng.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="courses" id="khoa-hoc">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Khóa học hiện có</span>
+        <h2>Các khóa học chuyên môn dành cho kỹ thuật viên trị liệu</h2>
+        <p>Từ nền tảng đánh giá thể trạng đến kỹ thuật trị liệu chuyên sâu.</p>
+      </div>
+      <div class="course-grid">
+        <div class="course-card">
+          <span class="course-tag">Khóa học</span>
+          <h3>Hiểu Về Huyết Áp</h3>
+          <div class="course-meta-row">
+            <span class="course-meta">Online</span>
+          </div>
+          <p>Dành cho kỹ thuật viên: đánh giá đúng tình trạng huyết áp khách hàng trước khi trị liệu.</p>
+          <ul class="course-points">
+            <li>Đọc hiểu chỉ số huyết áp chính xác</li>
+            <li>Nhận biết trường hợp cần thận trọng</li>
+            <li>Điều chỉnh phác đồ theo tình trạng</li>
+          </ul>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+            <button class="course-cta" style="background:var(--pine); color:#fff; cursor:pointer; border:none;" onclick="openCheckoutModal(5, 'Khóa Hiểu Về Huyết Áp', 0, true)">Thanh toán VietQR</button>
+            <a class="course-cta" href="https://zalo.me/0778659779" target="_blank">Tư vấn Zalo</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">Khóa học</span>
+          <h3>Hiểu Về Thể Trạng Cơ Thể</h3>
+          <div class="course-meta-row">
+            <span class="course-meta">Online</span>
+          </div>
+          <p>Đánh giá đúng thể trạng để xây dựng phác đồ chăm sóc phù hợp.</p>
+          <ul class="course-points">
+            <li>Xác định đặc điểm thể trạng</li>
+            <li>Nhận diện dấu hiệu mất cân bằng</li>
+            <li>Xây dựng phác đồ hiệu quả hơn</li>
+          </ul>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+            <button class="course-cta" style="background:var(--pine); color:#fff; cursor:pointer; border:none;" onclick="openCheckoutModal(5, 'Khóa Hiểu Về Thể Trạng Cơ Thể', 0, true)">Thanh toán VietQR</button>
+            <a class="course-cta" href="https://zalo.me/0778659779" target="_blank">Tư vấn Zalo</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">Khóa học</span>
+          <h3>Giải Phóng Mạc Cơ</h3>
+          <div class="course-meta-row">
+            <span class="course-meta">4 ngày liên tục</span>
+            <span class="course-meta">5.000.000đ</span>
+          </div>
+          <p>Hiểu cấu trúc mạc cơ để xác định đúng điểm cần giải phóng.</p>
+          <ul class="course-points">
+            <li>Giải phẫu mạc cơ toàn thân</li>
+            <li>Chuỗi mạc cơ và bản chất đau</li>
+            <li>Ứng dụng vào bệnh lý</li>
+          </ul>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+            <button class="course-cta" style="background:var(--pine); color:#fff; cursor:pointer; border:none;" onclick="openCheckoutModal(2, 'Khóa Giải Phóng Mạc Cơ', 5000000, false)">Thanh toán VietQR</button>
+            <a class="course-cta" href="https://zalo.me/0778659779" target="_blank">Tư vấn Zalo</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">Khóa học</span>
+          <h3>Nắn Chỉnh – Trị Liệu Cơ Xương Khớp</h3>
+          <div class="course-meta-row">
+            <span class="course-meta">4 ngày liên tục</span>
+            <span class="course-meta">4.000.000đ</span>
+          </div>
+          <p>Nâng cao tay nghề với các kỹ thuật nắn chỉnh an toàn.</p>
+          <ul class="course-points">
+            <li>Chiro: Nắn chỉnh cột sống</li>
+            <li>Yimo: Kỹ thuật trị liệu sâu</li>
+            <li>Y võ: Ứng dụng võ thuật</li>
+          </ul>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+            <button class="course-cta" style="background:var(--pine); color:#fff; cursor:pointer; border:none;" onclick="openCheckoutModal(3, 'Khóa Nắn Chỉnh Cơ Xương Khớp', 4000000, false)">Thanh toán VietQR</button>
+            <a class="course-cta" href="https://zalo.me/0778659779" target="_blank">Tư vấn Zalo</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">Khóa học</span>
+          <h3>Nắn Trật Đả Cốt Khoa</h3>
+          <div class="course-meta-row">
+            <span class="course-meta">4 ngày liên tục</span>
+            <span class="course-meta">4.000.000đ</span>
+          </div>
+          <p>Nắm vững giải phẫu và nhận diện bệnh lý thường gặp.</p>
+          <ul class="course-points">
+            <li>Giải phẫu hệ xương</li>
+            <li>Nhận diện bệnh lý</li>
+            <li>Kỹ thuật nắn chỉnh an toàn</li>
+          </ul>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+            <button class="course-cta" style="background:var(--pine); color:#fff; cursor:pointer; border:none;" onclick="openCheckoutModal(4, 'Khóa Nắn Trật Đả Cốt Khoa', 4000000, false)">Thanh toán VietQR</button>
+            <a class="course-cta" href="https://zalo.me/0778659779" target="_blank">Tư vấn Zalo</a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">Khóa trọn gói</span>
+          <h3>Trị Liệu Y Cơ — Bí Quyết Chữa Lành</h3>
+          <div class="course-meta-row">
+            <span class="course-meta">7 ngày thực hành + Online</span>
+            <span class="course-meta">11.900.000đ</span>
+          </div>
+          <p>Khoản đầu tư sở hữu tư duy y khoa chuẩn hóa, bao gồm mô-đun Huyết áp & Thể trạng (Online) và bộ công cụ đánh giá lâm sàng dùng suốt sự nghiệp.</p>
+          <ul class="course-points">
+            <li>Tặng kèm: Mô-đun Hiểu Huyết Áp & Thể Trạng Cơ Thể (Online)</li>
+            <li>Chữa bệnh từ nội tạng & điều trị đường kinh</li>
+            <li>Di động khớp & logic loại trừ y khoa an toàn</li>
+            <li>Bộ công cụ & checklist đánh giá lâm sàng độc quyền</li>
+          </ul>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;">
+            <button class="course-cta" style="background:var(--pine); color:#fff; cursor:pointer; border:none;" onclick="openCheckoutModal(1, 'Trị Liệu Y Cơ Trọn Gói', 11900000, false)">Thanh toán VietQR</button>
+            <a class="course-cta" href="https://zalo.me/0778659779" target="_blank">Tư vấn Zalo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feedback" id="hoc-vien-noi-gi">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Học viên nói gì</span>
+        <h2>Phản hồi thực tế từ học viên đã học</h2>
+      </div>
+      <div class="feedback-grid">
+        <div class="feedback-card">
+          <p class="feedback-text">"Ứng dụng đúng kỹ thuật ngay tại bệnh viện, xác định chính xác điểm cần châm — hiệu quả rõ rệt ngay từ lần đầu tiên. Cảm ơn thầy rất nhiều."</p>
+          <div class="feedback-name">Tuyền Nguyễn</div>
+          <div class="feedback-role">Học viên khóa Trị Liệu Y Cơ</div>
+        </div>
+        <div class="feedback-card">
+          <p class="feedback-text">"Biết ơn kiến thức thầy trao. Chỉ sau 2 buổi làm nhẹ nhàng, không mất sức, sự thay đổi đã rõ rệt. Yêu thương và biết ơn."</p>
+          <div class="feedback-name">Tam Hao Vui Ve</div>
+          <div class="feedback-role">Học viên khóa Trị Liệu Y Cơ</div>
+        </div>
+        <div class="feedback-card">
+          <p class="feedback-text">"Ngay từ buổi thực hành đầu tiên đã thấy hiệu quả — khách phản hồi nhẹ nhõm ngay sau buổi trị liệu."</p>
+          <div class="feedback-name">Trần Thảo</div>
+          <div class="feedback-role">Học viên khóa Nắn Chỉnh</div>
+        </div>
+        <div class="feedback-card">
+          <p class="feedback-text">"Cảm ơn thầy đã tận tình hướng dẫn kỹ năng và rất nhiều phương pháp hay. Giờ em tự tin hơn nhiều để thực hành."</p>
+          <div class="feedback-name">Ngụy Dương</div>
+          <div class="feedback-role">Học viên khóa Trị Liệu Y Cơ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="survey-form-section" id="form-dang-ky">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Tìm hiểu nhu cầu của bạn</span>
+        <h2>Trả lời nhanh 5 câu hỏi để được tư vấn khóa học phù hợp nhất</h2>
+      </div>
+      <div class="form-container">
+        <div class="google-form-wrap">
+          <iframe
+            id="google-form-frame"
+            title="Google Form khảo sát nhu cầu học viên"
+            src=""
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div id="google-form-placeholder" class="google-form-placeholder" style="margin-top:20px;">
+          <strong>Google Form cần sử dụng link embed để hiển thị trực tiếp trên trang</strong>
+          Link hiện tại đang là dạng rút gọn Google Forms, nên cần dùng URL embed thật để hiển thị trong iframe. Nếu bạn đang chờ link embed, hãy mở form bằng nút bên dưới để tiếp tục làm khảo sát.
+          <ul>
+            <li>Mở Google Form → Gửi → Nhúng → Sao chép URL embed</li>
+            <li>Hoặc mở link Google Form trực tiếp bằng nút bên dưới</li>
+          </ul>
+          <div style="margin-top:16px;">
+            <a id="google-form-open-link" class="btn-primary" href="https://forms.gle/KEYWFFutJDemHn357" target="_blank" rel="noopener" style="display:inline-flex;">Mở Google Form</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-band" id="lien-he">
+    <div class="wrap">
+      <span class="eyebrow">Đăng ký tư vấn</span>
+      <h2>Nhắn Zalo để được tư vấn khóa học chuyên môn phù hợp</h2>
+      <p>Dù bạn là kỹ thuật viên mới vào nghề hay đã có kinh nghiệm, để lại lời nhắn qua Zalo — đội ngũ Trị Liệu Y Cơ sẽ tư vấn khóa học phù hợp với nhu cầu chuyên môn của bạn.</p>
+      <div class="phone-pill">
+        <span>0778 659 779</span>
+      </div>
+      <div>
+        <a class="btn-primary" href="https://zalo.me/0778659779" target="_blank">Mở Zalo ngay</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div><strong>Trị Liệu Y Cơ</strong> · trilieuyco.com</div>
+    <div>Zalo tư vấn: 0778 659 779</div>
+    <div>&copy; <span id="year"></span> Trị Liệu Y Cơ. All rights reserved.</div>
+  </div>
+</footer>
+
+<a href="https://zalo.me/0778659779" target="_blank" class="zalo-float" aria-label="Chat Zalo">
+  <svg viewBox="0 0 48 48" fill="none">
+    <rect width="48" height="48" rx="12" fill="#0068FF"/>
+    <path d="M24 12c-6.6 0-12 4.5-12 10 0 3.4 1.9 6.4 4.8 8.4-.2 1.2-.7 3-1.6 4.4 1.9-.4 4-1.4 5.6-2.6.9.2 1.9.3 3.2.3 6.6 0 12-4.5 12-10s-5.4-10.5-12-10.5z" fill="#fff"/>
+  </svg>
+</a>
+
+<!-- Chatbot Widget Window & Trigger -->
+<div class="chat-widget-toggle" id="chat-toggle" aria-label="Mở Chatbot Tư Vấn">
+  <span class="chat-widget-badge"></span>
+  <svg viewBox="0 0 24 24">
+    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/>
+  </svg>
+</div>
+
+<div class="chat-window" id="chat-window">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <span class="chat-header-title">Tư Vấn Trị Liệu Y Cơ</span>
+      <span class="chat-header-sub">Trợ lý tư vấn chuyên môn (24/7)</span>
+    </div>
+    <button class="chat-close-btn" id="chat-close" aria-label="Đóng chat">&times;</button>
+  </div>
+  <div class="chat-body" id="chat-messages">
+    <!-- Dynamic Messages -->
+  </div>
+  <div class="chat-footer">
+    <input type="text" class="chat-input" id="chat-input" placeholder="Nhập câu hỏi của bạn..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+    <button class="chat-send-btn" id="chat-send" onclick="sendChatMessage()" aria-label="Gửi tin nhắn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Checkout Information Form Modal -->
+<div class="sepay-modal-backdrop" id="checkout-modal">
+  <div class="sepay-modal-card">
+    <div class="sepay-modal-header">
+      <h3 id="checkout-modal-title">Điền Thông Tin Đăng Ký Mua Hàng</h3>
+      <button class="sepay-modal-close" onclick="closeCheckoutModal()">&times;</button>
+    </div>
+    <div class="sepay-modal-body" style="text-align:left;">
+      <p style="font-size: 0.88rem; color: rgba(27,33,29,0.75); margin-bottom: 16px;">Vui lòng điền thông tin để chúng tôi liên hệ xác nhận và lưu thông tin đơn hàng của bạn.</p>
+      
+      <input type="hidden" id="co-prod-id">
+      <input type="hidden" id="co-is-custom">
+
+      <div style="background:var(--mist); padding:12px 16px; border-radius:10px; margin-bottom:16px; border:1px solid rgba(20,51,44,0.1);">
+        <span style="font-size:0.78rem; color:rgba(27,33,29,0.65); display:block;">Sản phẩm / Khóa học:</span>
+        <strong id="co-prod-name-display" style="color:var(--pine); font-size:0.95rem;">-</strong>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div>
+          <label style="font-size:0.85rem; font-weight:600; color:var(--pine); display:block; margin-bottom:4px;">Họ và tên người mua / học viên *</label>
+          <input type="text" id="co-name" placeholder="Ví dụ: Nguyễn Văn A" style="width:100%; padding:10px 14px; border:1px solid rgba(20,51,44,0.2); border-radius:8px; font-size:0.9rem; outline:none;">
+        </div>
+
+        <div>
+          <label style="font-size:0.85rem; font-weight:600; color:var(--pine); display:block; margin-bottom:4px;">Số điện thoại / Zalo liên hệ *</label>
+          <input type="tel" id="co-phone" placeholder="Ví dụ: 0901234567" style="width:100%; padding:10px 14px; border:1px solid rgba(20,51,44,0.2); border-radius:8px; font-size:0.9rem; outline:none;">
+        </div>
+
+        <div id="co-amount-group">
+          <label style="font-size:0.85rem; font-weight:600; color:var(--pine); display:block; margin-bottom:4px;">Số tiền học phí (VNĐ) *</label>
+          <input type="number" id="co-amount" placeholder="11900000" style="width:100%; padding:10px 14px; border:1px solid rgba(20,51,44,0.2); border-radius:8px; font-size:0.9rem; outline:none;">
+          <span id="co-amount-note" style="font-size:0.75rem; color:rgba(27,33,29,0.6); display:block; margin-top:2px;"></span>
+        </div>
+      </div>
+
+      <button class="cta-chat-btn" style="margin-top:20px; font-size:0.95rem; padding:12px; width:100%;" onclick="submitCheckoutForm()">
+        Xác Nhận & Lấy Mã VietQR Thanh Toán 👉
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Sepay VietQR Payment Modal -->
+<div class="sepay-modal-backdrop" id="sepay-modal">
+  <div class="sepay-modal-card">
+    <div class="sepay-modal-header">
+      <h3 id="sepay-modal-title">Thanh Toán Khóa Học — VietQR SePay</h3>
+      <button class="sepay-modal-close" onclick="closeSepayModal()">&times;</button>
+    </div>
+    <div class="sepay-modal-body">
+      <p style="font-size: 0.88rem; color: rgba(27,33,29,0.75); margin-bottom: 14px;">Mở App Ngân hàng quét mã VietQR bên dưới để thanh toán tự động xác nhận qua SePay</p>
+      
+      <div class="sepay-qr-container">
+        <img id="sepay-qr-img" class="sepay-qr-img" src="" alt="Mã VietQR Thanh Toán SePay">
+      </div>
+
+      <div id="sepay-custom-amount-box" style="display:none; margin-bottom:14px; text-align:left;">
+        <label style="font-size:0.85rem; font-weight:600; color:var(--pine); display:block; margin-bottom:6px;">Nhập số tiền học phí / ủng hộ tùy chọn (VNĐ):</label>
+        <input type="number" id="sepay-custom-input" placeholder="Nhập số tiền (ví dụ: 500000)" style="width:100%; padding:10px 14px; border:1px solid rgba(20,51,44,0.2); border-radius:8px; font-size:0.95rem; font-weight:600; color:var(--coral);" oninput="updateCustomAmountQR()">
+        <span style="font-size:0.76rem; color:rgba(27,33,29,0.6); display:block; margin-top:4px;">💡 Để trống hoặc nhập 0 nếu bạn muốn tự điền số tiền trực tiếp trên App ngân hàng.</span>
+      </div>
+
+      <div class="sepay-info-group">
+        <div class="sepay-info-row">
+          <span class="sepay-info-label">Ngân hàng</span>
+          <span class="sepay-info-val">BIDV</span>
+        </div>
+        <div class="sepay-info-row">
+          <span class="sepay-info-label">Số tài khoản</span>
+          <span class="sepay-info-val">
+            <span id="sepay-acc">8869866617</span>
+            <button class="sepay-copy-btn" onclick="copySepayText('8869866617', this)">Copy</button>
+          </span>
+        </div>
+        <div class="sepay-info-row">
+          <span class="sepay-info-label">Số tiền</span>
+          <span class="sepay-info-val">
+            <span id="sepay-amount-txt">11.900.000đ</span>
+            <button class="sepay-copy-btn" onclick="copySepayText(sepayCurrentAmount, this)">Copy</button>
+          </span>
+        </div>
+        <div class="sepay-info-row">
+          <span class="sepay-info-label">Nội dung CK</span>
+          <span class="sepay-info-val">
+            <span id="sepay-des-txt" style="color: var(--coral); font-family: monospace;">TYC119</span>
+            <button class="sepay-copy-btn" onclick="copySepayText(sepayCurrentDes, this)">Copy</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="sepay-status-box">
+        <div class="sepay-pulse-dot"></div>
+        <span>Tự động xác nhận giao dịch qua SePay ngay khi chuyển khoản...</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ---------- Sepay VietQR Payment Controller ---------- */
+  const API_BASE = (window.location.protocol === 'file:' || !window.location.port) ? 'http://localhost:8080' : '';
+  const SEPAY_BANK = "BIDV";
+  const SEPAY_ACC = "8869866617";
+  let sepayCurrentAmount = 11900000;
+  let sepayCurrentDes = "TYC119";
+
+  function openCheckoutModal(productId, courseName, defaultAmount, isCustom = false) {
+    document.getElementById('co-prod-id').value = productId;
+    document.getElementById('co-prod-name-display').textContent = courseName;
+    document.getElementById('co-is-custom').value = isCustom ? "1" : "0";
+    
+    const amountInput = document.getElementById('co-amount');
+    const amountNote = document.getElementById('co-amount-note');
+
+    if (isCustom) {
+      amountInput.disabled = false;
+      amountInput.value = defaultAmount > 0 ? defaultAmount : "";
+      amountNote.textContent = "💡 Bạn có thể nhập số tiền tùy chọn học phí mong muốn.";
+    } else {
+      amountInput.disabled = true;
+      amountInput.value = defaultAmount;
+      amountNote.textContent = "Mức học phí niêm yết chuẩn khóa học.";
+    }
+
+    document.getElementById('checkout-modal').classList.add('active');
+  }
+
+  function closeCheckoutModal() {
+    document.getElementById('checkout-modal').classList.remove('active');
+  }
+
+  async function submitCheckoutForm() {
+    const name = document.getElementById('co-name').value.trim();
+    const phone = document.getElementById('co-phone').value.trim();
+    const productId = parseInt(document.getElementById('co-prod-id').value) || 1;
+    const amount = parseFloat(document.getElementById('co-amount').value) || 0;
+    const courseName = document.getElementById('co-prod-name-display').textContent;
+    const isCustom = document.getElementById('co-is-custom').value === "1";
+
+    if (!name || !phone) {
+      alert("Vui lòng điền đầy đủ Họ tên và Số điện thoại/Zalo để chúng tôi lưu thông tin đơn hàng!");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE}/api/checkout`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          zalo: phone,
+          product_id: productId,
+          amount
+        })
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        closeCheckoutModal();
+        openSepayModal(courseName, data.amount, data.des_code, isCustom);
+      } else {
+        alert("Có lỗi: " + (data.error || "Không thể khởi tạo đơn hàng!"));
+      }
+    } catch(e) {
+      console.error(e);
+      closeCheckoutModal();
+      openSepayModal(courseName, amount, "TYC" + phone.slice(-4), isCustom);
+    }
+  }
+
+  function openSepayModal(courseName = "Trị Liệu Y Cơ Trọn Gói", amount = 11900000, desCode = "TYC119", isCustom = false) {
+    sepayCurrentAmount = amount;
+    sepayCurrentDes = desCode;
+    
+    document.getElementById('sepay-modal-title').textContent = "Thanh toán " + courseName;
+    document.getElementById('sepay-acc').textContent = SEPAY_ACC;
+    document.getElementById('sepay-des-txt').textContent = desCode;
+
+    const customBox = document.getElementById('sepay-custom-amount-box');
+    const customInput = document.getElementById('sepay-custom-input');
+
+    if (isCustom) {
+      customBox.style.display = 'block';
+      customInput.value = amount > 0 ? amount : "";
+      document.getElementById('sepay-amount-txt').textContent = amount > 0 ? amount.toLocaleString('vi-VN') + "đ" : "Tùy chọn trên App";
+    } else {
+      customBox.style.display = 'none';
+      document.getElementById('sepay-amount-txt').textContent = amount.toLocaleString('vi-VN') + "đ";
+    }
+
+    const qrUrl = `https://vietqr.app/img?acc=${SEPAY_ACC}&bank=${SEPAY_BANK}&amount=${amount}&des=${encodeURIComponent(desCode)}&template=compact`;
+    document.getElementById('sepay-qr-img').src = qrUrl;
+
+    document.getElementById('sepay-modal').classList.add('active');
+  }
+
+  function updateCustomAmountQR() {
+    const val = parseInt(document.getElementById('sepay-custom-input').value) || 0;
+    sepayCurrentAmount = val;
+    document.getElementById('sepay-amount-txt').textContent = val > 0 ? val.toLocaleString('vi-VN') + "đ" : "Tùy chọn trên App";
+    const qrUrl = `https://vietqr.app/img?acc=${SEPAY_ACC}&bank=${SEPAY_BANK}&amount=${val}&des=${encodeURIComponent(sepayCurrentDes)}&template=compact`;
+    document.getElementById('sepay-qr-img').src = qrUrl;
+  }
+
+  function closeSepayModal() {
+    document.getElementById('sepay-modal').classList.remove('active');
+  }
+
+  function copySepayText(text, btnElement) {
+    navigator.clipboard.writeText(text.toString()).then(() => {
+      const origText = btnElement.textContent;
+      btnElement.textContent = "Đã chép!";
+      setTimeout(() => btnElement.textContent = origText, 2000);
+    });
+  }
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const GOOGLE_FORM_EMBED_URL = "https://docs.google.com/forms/d/1KqOMoKaaSKB4WCd2IBjASNfeooKwCIoZxX5Y1GSiJV8/viewform?embedded=true";
+  const googleFormFrame = document.getElementById('google-form-frame');
+  const googleFormPlaceholder = document.getElementById('google-form-placeholder');
+  const googleFormOpenLink = document.getElementById('google-form-open-link');
+
+  if (GOOGLE_FORM_EMBED_URL && !GOOGLE_FORM_EMBED_URL.includes('PASTE_')) {
+    if (GOOGLE_FORM_EMBED_URL.includes('docs.google.com/forms') || GOOGLE_FORM_EMBED_URL.includes('viewform?embedded=true')) {
+      googleFormFrame.src = GOOGLE_FORM_EMBED_URL;
+      if (googleFormPlaceholder) googleFormPlaceholder.style.display = 'none';
+    } else {
+      googleFormFrame.style.display = 'none';
+      if (googleFormOpenLink) {
+        googleFormOpenLink.href = GOOGLE_FORM_EMBED_URL;
+        googleFormOpenLink.textContent = 'Mở Google Form để điền khảo sát';
+      }
+    }
+  } else {
+    googleFormFrame.src = 'about:blank';
+    googleFormFrame.style.display = 'none';
+  }
+
+  /* ---------- Chatbot Interactive Engine ---------- */
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatWindow = document.getElementById('chat-window');
+  const chatClose = document.getElementById('chat-close');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatInput = document.getElementById('chat-input');
+
+  let hasGreeted = false;
+
+  const FAQ_DATA = [
+    {
+      keywords: ["chưa có kinh nghiệm", "mới vào nghề", "nền tảng y khoa", "người mới", "học được không"],
+      question: "Mới vào nghề / Chưa có nền tảng y khoa có học được không?",
+      answer: "Hoàn toàn học được bạn nhé! Chương trình đi từ logic gốc rễ đến thực hành. Thay vì học thuộc lòng thuật ngữ giải phẫu hay học vẹt mẹo thao tác, chúng mình trao cho bạn **Bộ checklist đánh giá lâm sàng và sơ đồ logic loại trừ** được chuẩn hóa sẵn để dóng theo 5 bước (phân biệt đau cơ thuần túy vs tổn thương thần kinh/đĩa đệm)."
+    },
+    {
+      keywords: ["khác gì", "đối thủ", "mẹo", "thợ làm mẹo", "khác biệt"],
+      question: "Khác gì so với các lớp dạy nắn chỉnh / mẹo bấm bóp ngắn hạn khác?",
+      answer: "Khác biệt cốt lõi ở **Tư duy y khoa chuẩn chứng cứ** và **ranh giới an toàn**: Nơi khác dạy thao tác tay ngắn hạn hoặc phô diễn kỹ thuật, dễ can thiệp nhầm ca bệnh nặng. Chúng mình giúp bạn hiểu sâu cơ chế gốc rễ, làm chủ logic loại trừ y khoa và tự tin giải thích minh bạch với người bệnh."
+    },
+    {
+      keywords: ["giá", "học phí", "11.900.000", "11,9", "đắt", "chi phí"],
+      question: "Tại sao học phí khóa trọn gói 11.900.000 VNĐ sao cao hơn các bên khác?",
+      answer: "Mức giá 11.900.000 VNĐ không phải để mua vài buổi học mẹo tay chân, mà là khoản đầu tư một lần để sở hữu **tư duy y khoa và bộ công cụ đánh giá lâm sàng dùng suốt sự nghiệp** — giúp bạn tự tin nâng giá mỗi ca trị liệu gấp 2–3 lần và định vị vị thế Chuyên viên cao cấp."
+    },
+    {
+      keywords: ["7 ngày", "thời gian", "ngắn", "học 7 ngày"],
+      question: "Thời gian học 7 ngày có quá ngắn để nhớ và thực hành?",
+      answer: "Trong 7 ngày trực tiếp, giảng viên sẽ cầm tay chỉ việc và chuẩn hóa từng thao tác. Quan trọng hơn, bạn được mang về **Bộ công cụ tra cứu y khoa số hóa** (checklist đánh giá đau, mini-guide thể trạng, case study mẫu) để dóng theo mỗi khi làm việc thực tế."
+    },
+    {
+      keywords: ["máy móc", "phòng khám", "thực hành"],
+      question: "Bên khác có máy móc/phòng khám hoành tráng, bên mình thực hành thế nào?",
+      answer: "Máy móc chỉ là phương tiện. Chúng mình tập trung vào thứ các phòng khám không dạy: **giúp bạn làm chủ đôi bàn tay và tư duy loại trừ an toàn**. Bạn sẽ thực hành 1:1 trên ca lâm sàng thật để cảm nhận tổn thương mạc cơ & phản xạ thần kinh chuẩn xác."
+    },
+    {
+      keywords: ["chứng chỉ", "bằng", "bao việc", "việc làm"],
+      question: "Học xong có được cấp chứng chỉ hay bao việc làm không?",
+      answer: "Học viên đạt kiểm tra năng lực sẽ nhận **Chứng nhận hoàn thành khóa đào tạo chuyên môn**. Chúng mình không trao lời hứa bao việc ngắn hạn, mà trao năng lực tự tạo lập uy tín chuyên môn để khách hàng và nhà tuyển dụng tự tìm đến bạn."
+    },
+    {
+      keywords: ["online", "offline", "trực tiếp", "hình thức", "huyết áp", "thể trạng"],
+      question: "Khóa học theo hình thức Online, Offline hay kết hợp?",
+      answer: "Khóa học kết hợp tối ưu: **Offline 7 ngày thực hành 1:1** (di động khớp, mạc cơ, nắn chỉnh) + **Mô-đun Online chuyên sâu** (đọc hiểu chỉ số Huyết Áp & phân tích Thể Trạng cơ thể) cùng bộ checklist tra cứu case study trọn đời."
+    },
+    {
+      keywords: ["ca khó", "hỗ trợ", "sau khóa học", "giảng viên hỗ trợ"],
+      question: "Sau khóa học gặp ca khó có được hỗ trợ không?",
+      answer: "Chắc chắn có! Bạn sẽ tham gia **Cộng đồng Chuyên viên Trị liệu Y Cơ**, nơi giảng viên và chuyên gia luôn đồng hành giải đáp trực tiếp các ca bệnh phức tạp bạn gặp trong quá trình hành nghề."
+    },
+    {
+      keywords: ["lẻ", "chuyên đề", "mạc cơ", "nắn chỉnh", "khóa lẻ"],
+      question: "Chưa đủ kinh phí học trọn gói thì học chuyên đề lẻ trước được không?",
+      answer: "Hoàn toàn được! Bạn có thể học lẻ: Giải Phóng Mạc Cơ (5tr), Nắn Chỉnh Cơ Xương Khớp (4tr), hoặc Nắn Trật Đả Cốt Khoa (4tr). Tuy nhiên khóa trọn gói 11.900.000đ sẽ tối ưu chi phí và toàn diện nhất."
+    },
+    {
+      keywords: ["tăng thu nhập", "nâng giá", "thu nhập", "400k", "vị thế"],
+      question: "Học xong có thực sự giúp tăng thu nhập và nâng giá ca trị liệu không?",
+      answer: "Có bạn nhé! Khi bạn dùng bộ checklist y khoa giải thích minh bạch bệnh lý, khách hàng sẽ coi bạn là Chuyên viên Y tế. Nhiều học viên đã tự tin nâng giá ca trị liệu từ 150k lên 300k - 400k/ca."
+    }
+  ];
+
+  function toggleChatWindow() {
+    chatWindow.classList.toggle('active');
+    if (chatWindow.classList.contains('active') && !hasGreeted) {
+      greetUser();
+      hasGreeted = true;
+    }
+  }
+
+  chatToggle.addEventListener('click', toggleChatWindow);
+  chatClose.addEventListener('click', () => chatWindow.classList.remove('active'));
+
+  function scrollToForm(e) {
+    if (e) e.preventDefault();
+    chatWindow.classList.remove('active');
+    const targetSection = document.getElementById('form-dang-ky');
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function appendBotMsg(text, quickReplies = [], showFormBtn = false, showBuyBtn = false) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'msg-bubble msg-bot';
+    let html = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    
+    if (showBuyBtn) {
+      html += `<br><button class="cta-chat-btn" onclick="openCheckoutModal(1, 'Trị Liệu Y Cơ Trọn Gói', 11900000, false)">💳 Điền Thông Tin & Thanh Toán VietQR</button>`;
+      html += `<button class="cta-chat-btn" style="background:var(--pine); margin-top:6px;" onclick="scrollToForm(event)">📋 Điền Form Danh Sách Chờ & Đăng Ký</button>`;
+    } else if (showFormBtn) {
+      html += `<br><button class="cta-chat-btn" onclick="scrollToForm(event)">📋 Điền Form Khảo Sát Nhu Cầu (1 phút)</button>`;
+    }
+
+    if (quickReplies.length > 0) {
+      html += `<div class="quick-replies">`;
+      quickReplies.forEach(qr => {
+        html += `<button class="quick-btn" onclick="handleQuickReply('${qr.label}')">${qr.label}</button>`;
+      });
+      html += `</div>`;
+    }
+
+    msgDiv.innerHTML = html;
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function appendUserMsg(text) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'msg-bubble msg-user';
+    msgDiv.textContent = text;
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function greetUser() {
+    appendBotMsg(
+      "Chào bạn! Mình là trợ lý tư vấn chuyên môn của **Trị Liệu Y Cơ**.\n\nTại đây, chúng mình không đào tạo 'thợ làm theo mẹo', mà tập trung hệ thống hóa **tư duy y khoa chuẩn chứng cứ** và trao bộ công cụ đánh giá lâm sàng giúp KTV làm chủ vị thế chuyên môn độc lập.\n\nBạn đang quan tâm đến nội dung nào dưới đây?",
+      [
+        { label: "Chưa có nền tảng y khoa có học được không?" },
+        { label: "Khác biệt với dạy mẹo ngắn hạn?" },
+        { label: "Vì sao học phí là 11.900.000đ?" },
+        { label: "Tôi muốn ĐĂNG KÝ HỌC NGAY" },
+        { label: "Tư vấn lộ trình / Điền khảo sát" }
+      ]
+    );
+  }
+
+  function handleQuickReply(label) {
+    appendUserMsg(label);
+    processQuery(label);
+  }
+
+  function sendChatMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    appendUserMsg(text);
+    chatInput.value = '';
+    processQuery(text);
+  }
+
+  function processQuery(query) {
+    const qLower = query.toLowerCase();
+
+    // Specific course triggers
+    if (qLower.includes("mạc cơ")) {
+      setTimeout(() => {
+        appendBotMsg(
+          "Khóa học **Giải Phóng Mạc Cơ** (4 ngày liên tục - Học phí **5.000.000đ**):\nHiểu cấu trúc mạc cơ, chuỗi mạc cơ toàn thân và kỹ thuật giải phóng điểm kích hoạt đau chuyên sâu.\n\nBạn bấm nút bên dưới để mở mã VietQR SePay thanh toán tự động nhé!",
+          [], false, false
+        );
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'msg-bubble msg-bot';
+        msgDiv.innerHTML = `<button class="cta-chat-btn" onclick="openSepayModal('Khóa Giải Phóng Mạc Cơ', 5000000, 'GPMC5M')">💳 Quét Mã VietQR Thanh Toán (5.000.000đ)</button>`;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 400);
+      return;
+    }
+
+    if (qLower.includes("nắn chỉnh")) {
+      setTimeout(() => {
+        appendBotMsg(
+          "Khóa học **Nắn Chỉnh – Trị Liệu Cơ Xương Khớp** (4 ngày - Học phí **4.000.000đ**):\nNâng cao tay nghề với kỹ thuật Chiro, Yimo trị liệu sâu và ứng dụng Y võ an toàn.\n\nBạn bấm nút bên dưới để mở mã VietQR SePay thanh toán tự động nhé!",
+          [], false, false
+        );
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'msg-bubble msg-bot';
+        msgDiv.innerHTML = `<button class="cta-chat-btn" onclick="openSepayModal('Khóa Nắn Chỉnh Cơ Xương Khớp', 4000000, 'NCTLCXK4M')">💳 Quét Mã VietQR Thanh Toán (4.000.000đ)</button>`;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 400);
+      return;
+    }
+
+    if (qLower.includes("nắn trật đả")) {
+      setTimeout(() => {
+        appendBotMsg(
+          "Khóa học **Nắn Trật Đả Cốt Khoa** (4 ngày - Học phí **4.000.000đ**):\nNắm vững giải phẫu hệ xương, nhận diện bệnh lý và kỹ thuật nắn trật đả an toàn.\n\nBạn bấm nút bên dưới để mở mã VietQR SePay thanh toán tự động nhé!",
+          [], false, false
+        );
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'msg-bubble msg-bot';
+        msgDiv.innerHTML = `<button class="cta-chat-btn" onclick="openSepayModal('Khóa Nắn Trật Đả Cốt Khoa', 4000000, 'NTDCK4M')">💳 Quét Mã VietQR Thanh Toán (4.000.000đ)</button>`;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 400);
+      return;
+    }
+
+    if (qLower.includes("đăng ký") || qLower.includes("mua") || qLower.includes("chốt") || qLower.includes("giữ chỗ") || qLower.includes("khóa trọn gói")) {
+      setTimeout(() => {
+        appendBotMsg(
+          "Tuyệt vời! Khóa đào tạo trọn gói **Trị Liệu Y Cơ — Bí Quyết Chữa Lành** (7 ngày liên tục) áp dụng mức học phí chuẩn **11.900.000 VNĐ** (đã bao gồm bộ checklist lâm sàng độc quyền & quyền đồng hành trọn đời).\n\nĐể đảm bảo chất lượng cầm tay chỉ việc 1:1, mỗi lớp chỉ nhận tối đa 10-12 học viên. Bạn bấm nút bên dưới để điền form danh sách chờ giữ chỗ ngay nhé!",
+          [], false, true
+        );
+      }, 400);
+      return;
+    }
+
+    if (qLower.includes("form") || qLower.includes("khảo sát") || qLower.includes("tư vấn lộ trình") || qLower.includes("suy nghĩ")) {
+      setTimeout(() => {
+        appendBotMsg(
+          "Để giúp bạn hiểu rõ nhu cầu thực tế và chọn đúng khóa học phù hợp nhất, bạn dành ra 1 phút điền nhanh form khảo sát 5 câu hỏi dưới đây nhé. Đội ngũ chuyên môn sẽ phân tích và gửi bạn lộ trình miễn phí!",
+          [], true, false
+        );
+      }, 400);
+      return;
+    }
+
+    let matchedFaq = null;
+    for (const faq of FAQ_DATA) {
+      if (faq.keywords.some(kw => qLower.includes(kw))) {
+        matchedFaq = faq;
+        break;
+      }
+    }
+
+    setTimeout(() => {
+      if (matchedFaq) {
+        appendBotMsg(matchedFaq.answer, [
+          { label: "Tôi muốn ĐĂNG KÝ HỌC NGAY" },
+          { label: "Điền form tư vấn nhu cầu" }
+        ]);
+      } else {
+        appendBotMsg(
+          "Cảm ơn câu hỏi của bạn! Với thắc mắc này, bạn có thể nhắn Zalo trực tiếp tới hotline **0778 659 779** để giảng viên giải đáp 1:1, hoặc điền form khảo sát để nhận tư vấn phù hợp nhất.",
+          [
+            { label: "Tôi muốn ĐĂNG KÝ HỌC NGAY" },
+            { label: "Điền form tư vấn nhu cầu" }
+          ]
+        );
+      }
+    }, 400);
+  }
+</script>
+
+</body>
+</html>

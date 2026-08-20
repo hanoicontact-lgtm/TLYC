@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Trị Liệu Y Cơ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pine: #14332C;
+    --pine-dark: #0C221D;
+    --coral: #E85D42;
+    --coral-dark: #C94A32;
+    --sage: #B7CFC2;
+    --mist: #EFF3EF;
+    --ink: #1B211D;
+    --paper: #FBFAF7;
+    --sans: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+    padding-bottom: 60px;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--pine) 0%, var(--pine-dark) 100%);
+    color: #fff; padding: 20px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .admin-brand { font-family: 'Lora', Georgia, serif; font-size: 1.35rem; font-weight: 600; }
+  .header-actions a {
+    color: var(--sage); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    border: 1px solid rgba(183,207,194,0.4); padding: 6px 14px; border-radius: 999px;
+    transition: all .2s;
+  }
+  .header-actions a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  .wrap { max-width: 1140px; margin: 32px auto; padding: 0 24px; }
+
+  /* ---------- Tabs ---------- */
+  .tab-nav {
+    display: flex; gap: 8px; border-bottom: 2px solid rgba(20,51,44,0.1);
+    margin-bottom: 24px;
+  }
+  .tab-btn {
+    background: transparent; border: none; font-family: var(--sans);
+    font-size: 0.98rem; font-weight: 600; color: rgba(27,33,29,0.6);
+    padding: 12px 22px; cursor: pointer; border-bottom: 3px solid transparent;
+    transition: all .2s; display: flex; align-items: center; gap: 8px;
+  }
+  .tab-btn:hover { color: var(--pine); }
+  .tab-btn.active {
+    color: var(--coral); border-bottom-color: var(--coral);
+  }
+
+  /* ---------- Toolbar ---------- */
+  .toolbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
+  }
+  .btn-primary {
+    background: var(--coral); color: #fff; font-weight: 600; font-size: 0.9rem;
+    padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer;
+    transition: background .2s, transform .1s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { background: var(--coral-dark); transform: translateY(-1px); }
+
+  /* ---------- Table ---------- */
+  .table-card {
+    background: #fff; border-radius: 16px; border: 1px solid rgba(20,51,44,0.08);
+    box-shadow: 0 4px 12px rgba(20,51,44,0.03); overflow: hidden;
+  }
+  table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem; }
+  th {
+    background: var(--mist); color: var(--pine); font-weight: 600;
+    padding: 14px 18px; border-bottom: 1px solid rgba(20,51,44,0.08);
+  }
+  td { padding: 14px 18px; border-bottom: 1px solid rgba(20,51,44,0.06); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover { background: rgba(239,243,239,0.4); }
+
+  .badge {
+    display: inline-block; font-size: 0.76rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 999px; text-transform: uppercase;
+  }
+  .badge-service { background: #E0F2FE; color: #0369A1; }
+  .badge-digital { background: #F0FDF4; color: #15803D; }
+  .badge-physical { background: #FEF3C7; color: #B45309; }
+
+  .badge-paid { background: #DCFCE7; color: #15803D; }
+  .badge-pending { background: #FEF9C3; color: #A16207; }
+  .badge-completed { background: #E0E7FF; color: #4338CA; }
+  .badge-cancelled { background: #FEE2E2; color: #B91C1C; }
+
+  .btn-sm {
+    font-size: 0.8rem; font-weight: 600; padding: 5px 10px; border-radius: 6px;
+    border: none; cursor: pointer; transition: opacity .2s; margin-right: 4px;
+  }
+  .btn-edit { background: var(--mist); color: var(--pine); border: 1px solid rgba(20,51,44,0.15); }
+  .btn-edit:hover { background: var(--sage); }
+  .btn-del { background: #FEE2E2; color: #991B1B; }
+  .btn-del:hover { background: #FCA5A5; }
+
+  /* ---------- Modal ---------- */
+  .modal-backdrop {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(12, 34, 29, 0.65); backdrop-filter: blur(4px);
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-backdrop.active { display: flex; }
+
+  .modal-card {
+    background: #fff; border-radius: 18px; width: 480px; max-width: 100%;
+    border: 1px solid rgba(20,51,44,0.12); box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    overflow: hidden; animation: modalPop 0.25s ease-out;
+  }
+  @keyframes modalPop {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .modal-header {
+    background: var(--pine); color: #fff; padding: 16px 22px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-header h3 { font-size: 1.05rem; font-weight: 600; color: #fff; }
+  .modal-close { background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; }
+
+  .modal-body { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--pine); }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 10px 14px; border: 1px solid rgba(20,51,44,0.18); border-radius: 8px;
+    font-family: var(--sans); font-size: 0.9rem; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--coral); box-shadow: 0 0 0 3px rgba(232,93,66,0.1);
+  }
+
+  .modal-footer {
+    padding: 14px 22px; background: var(--paper); border-top: 1px solid rgba(20,51,44,0.08);
+    display: flex; justify-content: flex-end; gap: 10px;
+  }
+  .btn-secondary {
+    background: #E5E7EB; color: #374151; font-weight: 600; font-size: 0.88rem;
+    padding: 9px 18px; border-radius: 8px; border: none; cursor: pointer;
+  }
+  .btn-secondary:hover { background: #D1D5DB; }
+
+  .stock-note { font-size: 0.78rem; color: #D97706; font-weight: 500; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="admin-brand">Trị Liệu Y Cơ — Admin Panel</div>
+  <div class="header-actions">
+    <a href="/" target="_blank">🌐 Mở Website chính</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('products')">📦 Sản Phẩm & Khóa Học</button>
+    <button class="tab-btn" onclick="switchTab('customers')">👤 Khách Hàng</button>
+    <button class="tab-btn" onclick="switchTab('orders')">🛒 Quản Lý Đơn Hàng</button>
+  </div>
+
+  <!-- TAB 1: PRODUCTS -->
+  <div id="tab-products" class="tab-content">
+    <div class="toolbar">
+      <h2 style="font-size:1.2rem; color:var(--pine);">Danh Sách Sản Phẩm & Khóa Học</h2>
+      <button class="btn-primary" onclick="openProductModal()">+ Thêm sản phẩm mới</button>
+    </div>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên sản phẩm / Khóa học</th>
+            <th>Loại SP</th>
+            <th>Mức giá</th>
+            <th>Tồn kho</th>
+            <th>Mô tả</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="tbl-products-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 2: CUSTOMERS -->
+  <div id="tab-customers" class="tab-content" style="display:none;">
+    <div class="toolbar">
+      <h2 style="font-size:1.2rem; color:var(--pine);">Danh Sách Khách Hàng / Học Viên</h2>
+      <button class="btn-primary" onclick="openCustomerModal()">+ Thêm khách hàng mới</button>
+    </div>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Họ và tên</th>
+            <th>Số điện thoại</th>
+            <th>Zalo</th>
+            <th>Ngày đăng ký</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="tbl-customers-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 3: ORDERS -->
+  <div id="tab-orders" class="tab-content" style="display:none;">
+    <div class="toolbar">
+      <h2 style="font-size:1.2rem; color:var(--pine);">Danh Sách Đơn Hàng</h2>
+      <button class="btn-primary" onclick="openOrderModal()">+ Tạo đơn hàng mới</button>
+    </div>
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Mã đơn</th>
+            <th>Khách hàng</th>
+            <th>Sản phẩm mua</th>
+            <th>Loại SP</th>
+            <th>Số tiền</th>
+            <th>Trạng thái</th>
+            <th>Ngày tạo</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="tbl-orders-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-backdrop" id="product-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="product-modal-title">Thêm Sản Phẩm Mới</h3>
+      <button class="modal-close" onclick="closeModal('product-modal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="prod-id">
+      <div class="form-group">
+        <label>Tên sản phẩm / Khóa học *</label>
+        <input type="text" id="prod-name" placeholder="Ví dụ: Khóa học Giải Phóng Mạc Cơ">
+      </div>
+      <div class="form-group">
+        <label>Loại sản phẩm *</label>
+        <select id="prod-type" onchange="toggleStockField()">
+          <option value="service">Dịch vụ (Khóa học / Đào tạo)</option>
+          <option value="digital">Sản phẩm số (Checklist / Tài liệu)</option>
+          <option value="physical">Sản phẩm vật lý (Con lăn / Dụng cụ)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Giá bán (VNĐ) *</label>
+        <input type="number" id="prod-price" placeholder="11900000">
+      </div>
+      <div class="form-group" id="group-stock">
+        <label>Số lượng tồn kho (Chỉ dành cho sản phẩm Vật Lý)</label>
+        <input type="number" id="prod-stock" placeholder="Ví dụ: 50" disabled>
+        <span class="stock-note">* Với sản phẩm số và dịch vụ, số lượng tồn kho để trống/null.</span>
+      </div>
+      <div class="form-group">
+        <label>Mô tả ngắn</label>
+        <textarea id="prod-desc" rows="3" placeholder="Mô tả chi tiết sản phẩm..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('product-modal')">Hủy</button>
+      <button class="btn-primary" onclick="saveProduct()">Lưu thông tin</button>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER MODAL -->
+<div class="modal-backdrop" id="customer-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="customer-modal-title">Thêm Khách Hàng Mới</h3>
+      <button class="modal-close" onclick="closeModal('customer-modal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="cust-id">
+      <div class="form-group">
+        <label>Họ và tên *</label>
+        <input type="text" id="cust-name" placeholder="Nguyễn Văn A">
+      </div>
+      <div class="form-group">
+        <label>Số điện thoại *</label>
+        <input type="text" id="cust-phone" placeholder="0901234567">
+      </div>
+      <div class="form-group">
+        <label>Số Zalo</label>
+        <input type="text" id="cust-zalo" placeholder="0901234567">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('customer-modal')">Hủy</button>
+      <button class="btn-primary" onclick="saveCustomer()">Lưu thông tin</button>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-backdrop" id="order-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="order-modal-title">Tạo Đơn Hàng Mới</h3>
+      <button class="modal-close" onclick="closeModal('order-modal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="ord-id">
+      <div class="form-group">
+        <label>Chọn Khách hàng *</label>
+        <select id="ord-cust-id"></select>
+      </div>
+      <div class="form-group">
+        <label>Chọn Sản phẩm / Khóa học *</label>
+        <select id="ord-prod-id" onchange="autoFillPrice()"></select>
+      </div>
+      <div class="form-group">
+        <label>Số tiền đơn hàng (VNĐ) *</label>
+        <input type="number" id="ord-amount" placeholder="11900000">
+      </div>
+      <div class="form-group">
+        <label>Trạng thái đơn hàng *</label>
+        <select id="ord-status">
+          <option value="paid">Đã thanh toán (Paid)</option>
+          <option value="pending">Đang chờ (Pending)</option>
+          <option value="completed">Hoàn thành (Completed)</option>
+          <option value="cancelled">Đã hủy (Cancelled)</option>
+        </select>
+      </div>
+      <span class="stock-note">⚡ Lưu ý: Nếu sản phẩm là VẬT LÝ, hệ thống sẽ TỰ ĐỘNG TRỪ 1 số lượng tồn kho khi tạo đơn mới. Với sản phẩm Số và Dịch Vụ sẽ KHÔNG trừ tồn kho.</span>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('order-modal')">Hủy</button>
+      <button class="btn-primary" onclick="saveOrder()">Lưu đơn hàng</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API_BASE = (window.location.protocol === 'file:' || !window.location.port) ? 'http://localhost:8080' : '';
+
+  let productsCache = [];
+  let customersCache = [];
+  let ordersCache = [];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadAllData();
+  });
+
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+
+    event.currentTarget.classList.add('active');
+    document.getElementById('tab-' + tabName).style.display = 'block';
+  }
+
+  async function loadAllData() {
+    await Promise.all([fetchProducts(), fetchCustomers(), fetchOrders()]);
+  }
+
+  // --- PRODUCTS CRUD ---
+  async function fetchProducts() {
+    try {
+      const res = await fetch(`${API_BASE}/api/products`);
+      productsCache = await res.json();
+      renderProducts();
+    } catch (e) {
+      console.error("Lỗi khi kết nối CSDL:", e);
+    }
+  }
+
+  function renderProducts() {
+    const tbody = document.getElementById('tbl-products-body');
+    tbody.innerHTML = productsCache.map(p => `
+      <tr>
+        <td>#${p.id}</td>
+        <td><strong>${p.name}</strong></td>
+        <td><span class="badge badge-${p.type}">${p.type === 'service' ? 'Dịch vụ' : p.type === 'digital' ? 'Sản phẩm số' : 'Vật lý'}</span></td>
+        <td style="color:var(--coral); font-weight:600;">${p.price.toLocaleString('vi-VN')}đ</td>
+        <td>${p.type === 'physical' ? `<strong>${p.stock_quantity ?? 0}</strong> sp` : '<span style="color:#9CA3AF;">Không áp dụng</span>'}</td>
+        <td style="color:rgba(27,33,29,0.7); font-size:0.85rem;">${p.description || '-'}</td>
+        <td>
+          <button class="btn-sm btn-edit" onclick="editProduct(${p.id})">Sửa</button>
+          <button class="btn-sm btn-del" onclick="deleteProduct(${p.id})">Xóa</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function toggleStockField() {
+    const type = document.getElementById('prod-type').value;
+    const stockInput = document.getElementById('prod-stock');
+    if (type === 'physical') {
+      stockInput.disabled = false;
+      stockInput.placeholder = "Nhập số lượng tồn kho";
+    } else {
+      stockInput.disabled = true;
+      stockInput.value = "";
+      stockInput.placeholder = "Không áp dụng";
+    }
+  }
+
+  function openProductModal() {
+    document.getElementById('product-modal-title').textContent = "Thêm Sản Phẩm Mới";
+    document.getElementById('prod-id').value = "";
+    document.getElementById('prod-name').value = "";
+    document.getElementById('prod-type').value = "service";
+    document.getElementById('prod-price').value = "";
+    document.getElementById('prod-stock').value = "";
+    document.getElementById('prod-desc').value = "";
+    toggleStockField();
+    document.getElementById('product-modal').classList.add('active');
+  }
+
+  function editProduct(id) {
+    const p = productsCache.find(x => x.id === id);
+    if (!p) return;
+    document.getElementById('product-modal-title').textContent = "Chỉnh Sửa Sản Phẩm #" + id;
+    document.getElementById('prod-id').value = p.id;
+    document.getElementById('prod-name').value = p.name;
+    document.getElementById('prod-type').value = p.type;
+    document.getElementById('prod-price').value = p.price;
+    document.getElementById('prod-stock').value = p.stock_quantity !== null ? p.stock_quantity : "";
+    document.getElementById('prod-desc').value = p.description || "";
+    toggleStockField();
+    document.getElementById('product-modal').classList.add('active');
+  }
+
+  async function saveProduct() {
+    const id = document.getElementById('prod-id').value;
+    const name = document.getElementById('prod-name').value.trim();
+    const type = document.getElementById('prod-type').value;
+    const price = parseFloat(document.getElementById('prod-price').value);
+    const stock_quantity = type === 'physical' ? (parseInt(document.getElementById('prod-stock').value) || 0) : null;
+    const description = document.getElementById('prod-desc').value.trim();
+
+    if (!name || isNaN(price)) {
+      alert("Vui lòng điền tên sản phẩm và mức giá hợp lệ!");
+      return;
+    }
+
+    const payload = { name, type, price, stock_quantity, description };
+    const method = id ? 'PUT' : 'POST';
+    const url = id ? `${API_BASE}/api/products?id=${id}` : `${API_BASE}/api/products`;
+
+    const res = await fetch(url, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      closeModal('product-modal');
+      fetchProducts();
+    } else {
+      alert("Có lỗi xảy ra khi lưu sản phẩm!");
+    }
+  }
+
+  async function deleteProduct(id) {
+    if (!confirm(`Bạn có chắc chắn muốn xóa sản phẩm #${id}?`)) return;
+    const res = await fetch(`${API_BASE}/api/products?id=${id}`, { method: 'DELETE' });
+    if (res.ok) fetchProducts();
+  }
+
+  // --- CUSTOMERS CRUD ---
+  async function fetchCustomers() {
+    try {
+      const res = await fetch(`${API_BASE}/api/customers`);
+      customersCache = await res.json();
+      renderCustomers();
+    } catch(e) { console.error(e); }
+  }
+
+  function renderCustomers() {
+    const tbody = document.getElementById('tbl-customers-body');
+    tbody.innerHTML = customersCache.map(c => `
+      <tr>
+        <td>#${c.id}</td>
+        <td><strong>${c.name}</strong></td>
+        <td>${c.phone || '-'}</td>
+        <td>${c.zalo || '-'}</td>
+        <td style="color:rgba(27,33,29,0.65); font-size:0.85rem;">${c.registered_at || '-'}</td>
+        <td>
+          <button class="btn-sm btn-edit" onclick="editCustomer(${c.id})">Sửa</button>
+          <button class="btn-sm btn-del" onclick="deleteCustomer(${c.id})">Xóa</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function openCustomerModal() {
+    document.getElementById('customer-modal-title').textContent = "Thêm Khách Hàng Mới";
+    document.getElementById('cust-id').value = "";
+    document.getElementById('cust-name').value = "";
+    document.getElementById('cust-phone').value = "";
+    document.getElementById('cust-zalo').value = "";
+    document.getElementById('customer-modal').classList.add('active');
+  }
+
+  function editCustomer(id) {
+    const c = customersCache.find(x => x.id === id);
+    if (!c) return;
+    document.getElementById('customer-modal-title').textContent = "Chỉnh Sửa Khách Hàng #" + id;
+    document.getElementById('cust-id').value = c.id;
+    document.getElementById('cust-name').value = c.name;
+    document.getElementById('cust-phone').value = c.phone || "";
+    document.getElementById('cust-zalo').value = c.zalo || "";
+    document.getElementById('customer-modal').classList.add('active');
+  }
+
+  async function saveCustomer() {
+    const id = document.getElementById('cust-id').value;
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    const zalo = document.getElementById('cust-zalo').value.trim();
+
+    if (!name) {
+      alert("Vui lòng điền họ tên khách hàng!");
+      return;
+    }
+
+    const payload = { name, phone, zalo };
+    const method = id ? 'PUT' : 'POST';
+    const url = id ? `${API_BASE}/api/customers?id=${id}` : `${API_BASE}/api/customers`;
+
+    const res = await fetch(url, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      closeModal('customer-modal');
+      fetchCustomers();
+    } else {
+      alert("Có lỗi xảy ra khi lưu thông tin khách hàng!");
+    }
+  }
+
+  async function deleteCustomer(id) {
+    if (!confirm(`Bạn có chắc muốn xóa khách hàng #${id}?`)) return;
+    const res = await fetch(`${API_BASE}/api/customers?id=${id}`, { method: 'DELETE' });
+    if (res.ok) fetchCustomers();
+  }
+
+  // --- ORDERS CRUD ---
+  async function fetchOrders() {
+    try {
+      const res = await fetch(`${API_BASE}/api/orders`);
+      ordersCache = await res.json();
+      renderOrders();
+    } catch(e) { console.error(e); }
+  }
+
+  function renderOrders() {
+    const tbody = document.getElementById('tbl-orders-body');
+    tbody.innerHTML = ordersCache.map(o => `
+      <tr>
+        <td><strong>#DH-${o.id}</strong></td>
+        <td>${o.customer_name || `Khách hàng #${o.customer_id}`}</td>
+        <td>${o.product_name || `Sản phẩm #${o.product_id}`}</td>
+        <td><span class="badge badge-${o.product_type || 'service'}">${o.product_type === 'physical' ? 'Vật lý' : o.product_type === 'digital' ? 'Số' : 'Dịch vụ'}</span></td>
+        <td style="color:var(--coral); font-weight:600;">${o.amount.toLocaleString('vi-VN')}đ</td>
+        <td><span class="badge badge-${o.status}">${o.status}</span></td>
+        <td style="color:rgba(27,33,29,0.65); font-size:0.85rem;">${o.created_at || '-'}</td>
+        <td>
+          <button class="btn-sm btn-edit" onclick="editOrder(${o.id})">Sửa</button>
+          <button class="btn-sm btn-del" onclick="deleteOrder(${o.id})">Xóa</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function openOrderModal() {
+    document.getElementById('order-modal-title').textContent = "Tạo Đơn Hàng Mới";
+    document.getElementById('ord-id').value = "";
+    
+    // Populate customer select
+    const custSelect = document.getElementById('ord-cust-id');
+    custSelect.innerHTML = customersCache.map(c => `<option value="${c.id}">${c.name} (${c.phone || 'Chưa có SĐT'})</option>`).join('');
+
+    // Populate product select
+    const prodSelect = document.getElementById('ord-prod-id');
+    prodSelect.innerHTML = productsCache.map(p => `<option value="${p.id}">${p.name} — ${p.price.toLocaleString('vi-VN')}đ (${p.type === 'physical' ? `Tồn: ${p.stock_quantity ?? 0}` : 'Dịch vụ/Số'})</option>`).join('');
+
+    autoFillPrice();
+    document.getElementById('ord-status').value = "paid";
+    document.getElementById('order-modal').classList.add('active');
+  }
+
+  function autoFillPrice() {
+    const prodId = parseInt(document.getElementById('ord-prod-id').value);
+    const p = productsCache.find(x => x.id === prodId);
+    if (p) {
+      document.getElementById('ord-amount').value = p.price;
+    }
+  }
+
+  function editOrder(id) {
+    const o = ordersCache.find(x => x.id === id);
+    if (!o) return;
+    document.getElementById('order-modal-title').textContent = "Chỉnh Sửa Đơn Hàng #DH-" + id;
+    document.getElementById('ord-id').value = o.id;
+
+    // Populate selects
+    const custSelect = document.getElementById('ord-cust-id');
+    custSelect.innerHTML = customersCache.map(c => `<option value="${c.id}" ${c.id === o.customer_id ? 'selected' : ''}>${c.name} (${c.phone || ''})</option>`).join('');
+
+    const prodSelect = document.getElementById('ord-prod-id');
+    prodSelect.innerHTML = productsCache.map(p => `<option value="${p.id}" ${p.id === o.product_id ? 'selected' : ''}>${p.name} — ${p.price.toLocaleString('vi-VN')}đ</option>`).join('');
+
+    document.getElementById('ord-amount').value = o.amount;
+    document.getElementById('ord-status').value = o.status;
+    document.getElementById('order-modal').classList.add('active');
+  }
+
+  async function saveOrder() {
+    const id = document.getElementById('ord-id').value;
+    const customer_id = parseInt(document.getElementById('ord-cust-id').value);
+    const product_id = parseInt(document.getElementById('ord-prod-id').value);
+    const amount = parseFloat(document.getElementById('ord-amount').value);
+    const status = document.getElementById('ord-status').value;
+
+    if (!customer_id || !product_id || isNaN(amount)) {
+      alert("Vui lòng chọn khách hàng, sản phẩm và nhập số tiền hợp lệ!");
+      return;
+    }
+
+    const payload = { customer_id, product_id, amount, status };
+    const method = id ? 'PUT' : 'POST';
+    const url = id ? `${API_BASE}/api/orders?id=${id}` : `${API_BASE}/api/orders`;
+
+    const res = await fetch(url, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      closeModal('order-modal');
+      fetchOrders();
+      fetchProducts(); // Refresh products in case stock quantity was deducted
+    } else {
+      const err = await res.json();
+      alert("Có lỗi: " + (err.message || "Không thể lưu đơn hàng!"));
+    }
+  }
+
+  async function deleteOrder(id) {
+    if (!confirm(`Bạn có chắc chắn muốn xóa đơn hàng #DH-${id}?`)) return;
+    const res = await fetch(`${API_BASE}/api/orders?id=${id}`, { method: 'DELETE' });
+    if (res.ok) fetchOrders();
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+  }
+</script>
+
+</body>
+</html>
