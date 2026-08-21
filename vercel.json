@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/quanly-admin", "destination": "/admin.html" }
+  ],
+  "routes": [
+    { "src": "/admin", "dest": "/admin.html" },
+    { "src": "/quanly-admin", "dest": "/admin.html" }
+  ]
+}
